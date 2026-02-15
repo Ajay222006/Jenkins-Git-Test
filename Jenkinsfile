@@ -2,13 +2,6 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Compile') {
             steps {
                 bat 'javac Hello.java'
@@ -21,6 +14,7 @@ pipeline {
             }
         }
     }
+
     post {
         success {
             echo 'Build Successful!'
