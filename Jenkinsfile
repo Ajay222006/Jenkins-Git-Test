@@ -21,7 +21,6 @@ pipeline {
             }
         }
     }
-
     post {
         success {
             echo 'Build Successful!'
