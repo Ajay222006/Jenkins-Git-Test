@@ -3,13 +3,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building from Git Jenkinsfile'
+                echo 'Building...'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing from Git Jenkinsfile'
-            }
+    }
+    post {
+        success {
+            echo 'Build Successful!'
+        }
+        failure {
+            echo 'Build Failed!'
         }
     }
 }
