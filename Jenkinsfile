@@ -1,18 +1,32 @@
 pipeline {
     agent any
+
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building...'
+                git 'https://github.com/your-username/your-repo.git'
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                bat 'javac Hello.java'
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: '*.class'
             }
         }
     }
+
     post {
-        success {
-            echo 'Build Successful!'
-        }
         failure {
             echo 'Build Failed!'
+        }
+        success {
+            echo 'Build Successful!'
         }
     }
 }
